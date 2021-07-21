@@ -54,12 +54,7 @@ def turns(player_turns): ##############  check everyone turns ##################
     text=font.render(player_turns+" turns ",True,GREEN)
     gameDisplay.blit(text,(0,0))
 
-
-
-def warning_display():  ############################ warning display if someone click a part twice ############
-    font = pygame.font.SysFont(None,25)
-    text=font.render(" This part has been clicked. Please click another part",True,RED)
-    gameDisplay.blit(text,(0,0))
+###########################  display a message ###########################
 
 
 def text_objects(text,font):
@@ -81,11 +76,12 @@ def message_display(text):
 
 
 
-def drawLine(start_coord,end_coord):
+
+def drawLine(start_coord,end_coord):        ################### drawing the line of the frame #################
     pygame.draw.line(gameDisplay,RED,start_coord,end_coord,2)
 
 
-def find_partion(partion,pos):
+def find_partion(partion,pos):   ################# finding what part player click #####################
     for item in partion:
         if partion[item][0][0] <pos[0] <partion[item][0][1] and partion[item][1][0] < pos[1] < partion[item][1][1]:
             print(item)
@@ -96,7 +92,7 @@ def find_partion(partion,pos):
 
 
 
-def win(partion,meter):
+def win(partion,meter):      ################## checking the winning with check every row and columns and dioug###########
     if partion[1][2]==str(meter) and partion[2][2]==str(meter) and partion[3][2]==str(meter):
         return True
 
@@ -126,7 +122,7 @@ def win(partion,meter):
 
 
 
-def draw(partion):
+def draw(partion):      ################ check if the game being draw#########################
     counter=0
     for item in partion:
         if partion[item][2]!='no_one':
@@ -137,7 +133,7 @@ def draw(partion):
         return False
 
 
-def showing_ticks(partion):
+def showing_ticks(partion): ##################  showing X & O images  #################
     for items in partion:
         if partion[items][2]=='1':
             gameDisplay.blit(x_Img,partion[items][3])
@@ -165,8 +161,6 @@ def gameLoop():
 
     winning=False
     drawing=False
-
-    check_warning=False
 
 
     gameDisplay.fill(WHITE)
